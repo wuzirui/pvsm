@@ -1,0 +1,32 @@
+# --extra-index-url https://download.pytorch.org/whl/cu118
+# torch==2.4.1
+# torchvision==0.19.1+cu118
+xformers==0.0.28
+imageio==2.33.0
+Pillow==10.0.1
+imageio-ffmpeg==0.5.0
+omegaconf
+einops>= 0.4.1 
+transformers==4.56.1
+torchmetrics>= 0.11.0
+datasets==2.14.5
+rich>=13.3.2
+wandb==0.18.7
+opencv-python==4.7.0.72
+opencv-python-headless==4.7.0.72
+ipdb
+tqdm
+easydict==1.13
+lpips==0.1.4
+jaxtyping==0.3.1
+scikit-image==0.23.2 
+numpy==1.26.4
+pynvml
+hydra-core==1.3.2
+tensorboard
+torch_tb_profiler
+matplotlib
+huggingface_hub[cli]
+accelerate
+einx
+# gsplat>1.5.3 # Known issue with gsplat 1.5.3 batch rendering

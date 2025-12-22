@@ -1,0 +1,59 @@
+# @package _global_
+
+model:
+  class_name: model.projective_concat_dino.Images2LatentScene
+  embedding: rope
+
+  image_tokenizer:
+    image_size: 256
+    patch_size: 8
+    in_channels: 3
+    use_plucker: false # 6
+    use_pc_image: false # 3
+    use_orig_image: true # 3
+    use_dino: true
+
+  target_pose_tokenizer:
+    image_size: 256
+    patch_size: 8
+    in_channels: 3
+    use_plucker: false # 6
+    use_pc_image: true # 3
+    use_orig_image: false # 3
+    use_dino: true
+
+  transformer:
+    d: 768
+    d_head: 64
+    n_layer: 24
+    special_init: true
+    depth_init: true
+    use_qk_norm: true
+
+  dino:
+    model_path: metric_checkpoint/dinov3-vitb16-pretrain-lvd1689m
+    num_register_tokens: 4
+    keep_all_tokens: true
+  
+data_process:
+  representation: "point-cloud-image" # "point-cloud-image" or "plucker-ray"
+  point_cloud:
+    from: "random-mask" # mae training
+    gauss_scale: 0.005
+    opacity: 1.0
+    eps2d: 0.3
+    radius_clip: 0.0
+
+    backside:
+      enable: true
+      delta_depth: 1e-2
+      opacity: 0.7
+      color: all_pixel_random # single_random / all_pixel_random / grey
+
+    # bg_shell:
+    #   enable: true
+    #   num_points: 1000
+    #   radius: 200000.0
+    #   opacity: 0.7
+    #   scale_mul: 1.0
+    #   per_batch_random_color: false

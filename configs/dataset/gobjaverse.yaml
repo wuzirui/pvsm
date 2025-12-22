@@ -1,0 +1,13 @@
+# @package _global_
+
+training:
+  dataset_name: data.gobjaverse.GObjaverseDataset
+  dataset_path: ${machine.gobjaverse_path}
+
+gobjaverse:
+  root_dir: ${machine.gobjaverse_path}
+  split_file: train_full.json
+  min_num_images: 10
+  overfitting_mode: false
+  load_depth: true
+  allow_resample_on_error: true

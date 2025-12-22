@@ -1,0 +1,16 @@
+defaults:
+ - training: base   # training configurations
+ - machine: default_machine   # machine configurations -- path to datasets and models
+ - model: concat_dino_mae_full   # model configurations
+ - dataset: re10k_wai   # dataset configurations
+ - profiling: disable   # profiling configurations
+ - _self_  # overrides defined in this file
+
+training:
+  wandb_project: PVSM
+  wandb_exp_name: pvsm-re10k-wai
+  batch_size_per_gpu: 12
+  lr: 0.001
+  vis_every: 100
+  
+  l2_loss_weight: 1.0

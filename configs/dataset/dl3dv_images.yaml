@@ -1,0 +1,35 @@
+# @package _global_
+
+training:
+  dataset_name: data.pure_image_data.PureImageDataset
+  dataset_path: ${machine.dl3dv_images_path}
+  dynamic_input_view_num: false
+  num_views: 8
+  num_input_views: 2
+  num_target_views: 6
+  view_selector:
+    max_frame_dist: 64
+    min_frame_dist: 48
+
+data_cfg:
+  root_dir: ${machine.dl3dv_images_path}
+  splits_json: ${machine.dl3dv_images_path}/splits.json
+  num_views: ${training.num_views}
+  min_seq_len: 100
+  image_size: 256
+  square_crop: true
+  min_frame_dist: ${training.view_selector.min_frame_dist}
+  max_frame_dist: ${training.view_selector.max_frame_dist}
+  overfitting_mode: false
+
+data_process:
+  representation: "point-cloud-image" # "point-cloud-image" or "plucker-ray"
+  point_cloud:
+    from: random-mask # MAE training
+    gauss_scale: 0.005
+    opacity: 0.7
+    eps2d: 0.3
+    radius_clip: 0.0
+    backside:
+      enable: false
+      # no backside point cloud for scene-level dataset

@@ -1,0 +1,138 @@
+# @package _global_
+data_process:
+  point_cloud:
+    backside:
+      color: all_pixel_random
+      delta_depth: 0.01
+      enable: false
+      opacity: 0.7
+    eps2d: 0.3
+    from: depth
+    gauss_scale: 0.005
+    opacity: 0.7
+    radius_clip: 0.0
+  representation: point-cloud-image
+  target_perturbation:
+    enable: false
+    probability: 0.5
+    modes: [roll, yawpitch, fov, anisopixel]
+    roll_angle_choices: [-175.0, -155.0, -135.0, -115.0, -95.0, -75.0, -55.0, -35.0, -15.0, 15.0, 35.0, 55.0, 75.0, 95.0, 115.0, 135.0, 155.0, 175.0]
+    yaw_range: [-25.0, 25.0]
+    pitch_range: [-15.0, 15.0]
+    fov_range: [30.0, 120.0]
+    anisopixel_choices: [0.75, 0.8, 0.9, 1.1, 1.25]
+inference:
+  compute_metrics: true
+  if_inference: false
+  inference_out_dir: ./experiments/inference/dl3dv_finetune_re10k_bs64
+  render_video: false
+  render_video_config:
+    loop_video: true
+    num_frames: 60
+    order_poses: false
+    traj_type: interpolate
+model:
+  class_name: model.projective_concat_dino.Images2LatentScene
+  dino:
+    keep_all_tokens: true
+    model_path: metric_checkpoint/dinov3-vitb16-pretrain-lvd1689m
+    num_register_tokens: 4
+  embedding: rope
+  image_tokenizer:
+    image_size: 256
+    in_channels: 3
+    patch_size: 8
+    use_dino: true
+    use_orig_image: true
+    use_pc_image: false
+    use_plucker: false
+  target_pose_tokenizer:
+    image_size: 256
+    in_channels: 3
+    patch_size: 8
+    use_dino: true
+    use_orig_image: false
+    use_pc_image: true
+    use_plucker: false
+  transformer:
+    d: 768
+    d_head: 64
+    depth_init: true
+    n_layer: 12
+    special_init: true
+    use_qk_norm: true
+profiling:
+  enable_channels_last: false
+  enable_compile: false
+  enable_cuda_timers: false
+  enable_profiler: false
+  profiler:
+    active: 0
+    logdir: runs/prof
+    repeat: 0
+    wait: 0
+    warmup: 0
+training:
+  reset_training_state: true
+  ablation_group: none
+  allowed_gradnorm_factor: 10
+  amp_dtype: bf16
+  api_key_path: ./configs/api_keys.yaml
+  batch_size_per_gpu: 6
+  beta1: 0.9
+  beta2: 0.95
+  center_crop: true
+  checkpoint_dir: ./metric_checkpoint/pvsm_finetuned_small.pt
+  checkpoint_every: 100
+  compute_gns: false
+  confidence_alpha: 0.0
+  confidence_l2_loss_weight: 0.0
+  dataset_name: data.wai.WaiDataset
+  dataset_path: /data/user/zwu797/re10k_recon_full
+  dynamic_input_view_num: true
+  max_input_views: 3
+  min_input_views: 1
+  gns_every: 200
+  grad_accum_steps: 1
+  grad_checkpoint_every: 1
+  grad_clip_norm: 1.0
+  l2_loss_weight: 1.0
+  lpips_loss_weight: 0.0
+  lr: 0.0004
+  num_gpus: 4
+  num_input_views: 2
+  num_target_views: 6
+  num_threads: 8
+  num_views: 8
+  num_workers: 32
+  perceptual_loss_weight: 0.5
+  prefetch_factor: 2
+  print_every: 20
+  scene_scale_factor: 1.35
+  square_crop: true
+  target_has_input: true
+  train_steps: 100000
+  use_amp: true
+  use_rel_pose: false
+  use_tf32: true
+  val_every: 2000
+  val_steps: 20
+  view_selector:
+    data_warmup_length: 0
+    max_frame_dist: 128
+    min_frame_dist: 25
+    warmup_max_frame_dist: 128
+    warmup_min_frame_dist: 25
+  vis_every: 50
+  wandb_exp_name: dl3dv_finetune_re10k_bs64
+  wandb_log_every: 50
+  wandb_project: PVSM
+  warmup: 3000
+  weight_decay: 0.05
+wai:
+  WAI_DIR: ./example/
+  allow_resample_on_error: true
+  max_resample_attempts: 16
+  min_num_images: 26
+  overfitting_mode: false
+

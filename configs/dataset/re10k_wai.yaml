@@ -1,0 +1,38 @@
+# @package _global_
+
+training:
+  dataset_name: data.wai.WaiDataset
+  dataset_path: ${machine.re10k_wai_path}
+  view_selector:
+    max_frame_dist: 128
+    min_frame_dist: 96
+    data_warmup_length: 16000
+    warmup_min_frame_dist: 24
+    warmup_max_frame_dist: 64
+
+wai:
+  WAI_DIR: ${machine.re10k_wai_path}
+  min_num_images: 25
+  overfitting_mode: false
+  allow_resample_on_error: true
+  max_resample_attempts: 16
+
+data_process:
+  representation: "point-cloud-image" # "point-cloud-image" or "plucker-ray"
+  point_cloud:
+    gauss_scale: 0.005
+    opacity: 0.7
+    eps2d: 0.3
+    radius_clip: 0.0
+    backside:
+      enable: false
+      # no backside point cloud for scene-level dataset
+  target_perturbation:
+    enable: false
+    probability: 0.5
+    modes: [roll, yawpitch, fov, anisopixel]
+    roll_angle_choices: [-55.0, -35.0, -15.0, 15.0, 35.0, 55.0]
+    yaw_range: [-25.0, 25.0]
+    pitch_range: [-15.0, 15.0]
+    fov_range: [60.0, 120.0]
+    anisopixel_choices: [0.8, 0.9, 1.1, 1.25]

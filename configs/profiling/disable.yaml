@@ -1,0 +1,11 @@
+# instrumentation/off.yaml
+enable_profiler: false
+profiler:
+  wait: 0
+  warmup: 0
+  active: 0
+  repeat: 0
+  logdir: runs/prof
+enable_cuda_timers: false
+enable_compile: false
+enable_channels_last: false

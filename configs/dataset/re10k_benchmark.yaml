@@ -1,0 +1,27 @@
+# @package _global_
+benchmark:
+  # BENCH_DIR: /mnt/hdd_volume/datasets/re10k_benchmark         # Your benchmark root directory
+  BENCH_DIR: /data/zirui/re10k_benchmark         # Your benchmark root directory
+  group: roll                                    # roll|yawpitch|fov|anisopixel|scale_meta
+  split: test
+  eval_use_index_file: false # Set to true and provide index_list if you want to filter by overlap
+  index_list:
+    path: /home/zirui/lib/lvsm/data/evaluation_index_re10k_overlap.json
+  fixed_length:
+  overfitting_mode: false
+  allow_resample_on_error: true
+  max_resample_attempts: 16
+  load_depth: true
+  load_mask: true
+
+training:
+  dataset_name: data.benchmark_data.WaiBenchmarkDataset
+  num_views: 5
+  square_crop: true
+  num_input_views: 2
+  num_target_views: 3
+  dynamic_input_view_num: false
+  use_index_file: true
+
+inference:
+  inference_out_dir: ./experiments/consistency_benchmark/${benchmark.group}/${training.wandb_exp_name}

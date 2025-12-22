@@ -1,0 +1,6 @@
+# @package _global_
+
+machine:
+  gobjaverse_path: /path/to/gobjaverse_280k
+  re10k_wai_path: /path/to/re10k_recon
+  dl3dv_images_path: /path/to/dl3dv
