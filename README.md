@@ -67,6 +67,8 @@ metric_checkpoints/
 ```
 
 ### Interactive Demo
+For a quick interactive demo, please follow the [instruction](https://github.com/wuzirui/pvsm/blob/master/example/README.md) and unzip the downloaded [example data](https://hkustgz-my.sharepoint.com/:u:/g/personal/zwu797_connect_hkust-gz_edu_cn/IQB3_CSQ7YUbRJ0uowsxovCcAWs5gCP7qmVYkTKsnxnzQGc?e=iTozmL) (22.3 MB) to your local machine.
+
 To launch the interactive web-based demo:
 
 ```bash
