@@ -12,7 +12,7 @@
 
 <div align="center">
     <a href="https://wuzirui.github.io/pvsm-web"><strong>Project Page</strong></a> |
-    <a href="https://arxiv.org/abs/TBD"><strong>ArXiV</strong></a> |
+    <a href="https://arxiv.org/abs/2601.05116"><strong>ArXiV</strong></a> |
     <a href="https://youtu.be/HSQnrXCU_BM"><strong>YouTube</strong></a>
 </div>
 
@@ -125,11 +125,11 @@ You can use `configs/api_keys_example.yaml` as a template.
 If you find this work useful in your research, please consider citing:
 
 ```bibtex
-@article{pvsm2024,
-  title={PVSM: Projective View Synthesis Model},
-  author={...},
-  journal={...},
-  year={2024}
+@article{wu_pvsm_2026,
+  title={From Rays to Projections: Better Inputs for Feed-Forward View Synthesis},
+  author={Wu, Zirui and Jiang, Zeren and Oswald, Martin R. and Song, Jie},
+  journal={arxiv preprint arxiv:2601.05116},
+  year={2026}
 }
 ```
 
