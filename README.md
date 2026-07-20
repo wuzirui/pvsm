@@ -17,7 +17,7 @@
 </div>
 
 
-### Preprint 2025
+### CVPR 2026
 
 </div>
 
