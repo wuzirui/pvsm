@@ -128,7 +128,7 @@ If you find this work useful in your research, please consider citing:
 @article{wu_pvsm_2026,
   title={From Rays to Projections: Better Inputs for Feed-Forward View Synthesis},
   author={Wu, Zirui and Jiang, Zeren and Oswald, Martin R. and Song, Jie},
-  journal={arxiv preprint arxiv:2601.05116},
+  journal={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
   year={2026}
 }
 ```
