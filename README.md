@@ -81,7 +81,7 @@ The demo will start a web server. Open your browser and navigate to the displaye
 - Small model: ~2.5GB VRAM
 - Full model: ~3.0GB VRAM
 
-Note: The rendering quality in [gsplat](https://github.com/nerfstudio-project/gsplat) is compressed.
+Note: The rendering quality in [viser](https://github.com/nerfstudio-project/viser) is compressed.
 
 #### Running Inference
 
